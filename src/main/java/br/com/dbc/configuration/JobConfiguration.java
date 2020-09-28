@@ -35,7 +35,6 @@ public class JobConfiguration {
 	@Autowired
 	private Processor processor;
 	
-
 	@Bean
 	public Job job(JobBuilderFactory jobBuilderFactory) {
 		return jobBuilderFactory.get("Asynchronous Processing Account JOB")
@@ -73,6 +72,7 @@ public class JobConfiguration {
 				.name("Item-Writer-CSV")
 				.resource(new FileSystemResource(file))
 				.strict(false)
+				.encoding("UTF-8")
 				.linesToSkip(1)
 				.delimited()
 				.delimiter(";")
